@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moodistry – Shopping Cart</title>
+  <meta name="description" content="Moodistry blends essential oils, guided breathing, immersive VR, and tools into a simple daily ritual." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  </style>
+
+  <!-- PayPal JS SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AQNYFkWs_FpZGg-pCDdkp0Zh1HbmlOAW3iysqvMCvQ8blv5dxV5KGeM6kIUUH_LAIKbfihJSAZsqVdc7&components=buttons&currency=USD" data-sdk-integration-source="developer-studio"></script>
+</head>
+<body class="bg-white text-slate-900">
+
+  <!-- Header -->
+  <header class="border-b border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Moodistry</h1>
+      <button id="cartButton" class="relative rounded-full bg-indigo-600 px-4 py-2 text-white font-semibold" aria-haspopup="dialog" aria-expanded="false">
+        Cart
+        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-28">
+    <!-- Essential Oils -->
+    <section aria-labelledby="oils-heading">
+      <h2 id="oils-heading" class="text-3xl font-bold tracking-tight">Essential Oils</h2>
+      <p class="mt-3 max-w-3xl text-slate-700">Add your favorites to the cart below.</p>
+
+      <div class="mt-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+        <!-- Card template -->
+        <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+          <div class="aspect-[4/3] w-full overflow-hidden rounded-xl">
+            <img src="https://github.com/RegenCreatives/test-repo/blob/master/Purify.png?raw=true" alt="Purify (Lemongrass) bottle" class="h-full w-full object-cover" loading="lazy"/>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Purify • Lemongrass</h3>
+          <p class="mt-1 text-sm text-slate-600">Clears the air and the mind. Good for a quick reset.</p>
+          <button data-name="Purify • Lemongrass" data-price="4.00" class="mt-auto inline-block rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $4.00</button>
+        </article>
+
+        <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+          <div class="aspect-[4/3] w-full overflow-hidden rounded-xl">
+            <img src="https://github.com/RegenCreatives/test-repo/blob/master/Sleep.png?raw=true" alt="Sleep (Lavender) bottle" class="h-full w-full object-cover" loading="lazy"/>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Sleep • Lavender</h3>
+          <p class="mt-1 text-sm text-slate-600">Wind down without wrestling your thoughts.</p>
+          <button data-name="Sleep • Lavender" data-price="4.00" class="mt-auto inline-block rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $4.00</button>
+        </article>
+
+        <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+          <div class="aspect-[4/3] w-full overflow-hidden rounded-xl">
+            <img src="https://github.com/RegenCreatives/test-repo/blob/master/Focus.png?raw=true" alt="Focus (Sweet Orange) bottle" class="h-full w-full object-cover" loading="lazy"/>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Focus • Sweet Orange</h3>
+          <p class="mt-1 text-sm text-slate-600">Keeps your mind on task without the jitters.</p>
+          <button data-name="Focus • Sweet Orange" data-price="4.00" class="mt-auto inline-block rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $4.00</button>
+        </article>
+
+        <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+          <div class="aspect-[4/3] w-full overflow-hidden rounded-xl">
+            <img src="https://github.com/RegenCreatives/test-repo/blob/master/Refresh.png?raw=true" alt="Refresh (Peppermint) bottle" class="h-full w-full object-cover" loading="lazy"/>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Refresh • Peppermint</h3>
+          <p class="mt-1 text-sm text-slate-600">A clean lift when energy dips.</p>
+          <button data-name="Refresh • Peppermint" data-price="4.00" class="mt-auto inline-block rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $4.00</button>
+        </article>
+
+        <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+          <div class="aspect-[4/3] w-full overflow-hidden rounded-xl">
+            <img src="https://github.com/RegenCreatives/test-repo/blob/master/Relax.png?raw=true" alt="Relax (Frankincense) bottle" class="h-full w-full object-cover" loading="lazy"/>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Relax • Frankincense</h3>
+          <p class="mt-1 text-sm text-slate-600">Good for evening reflection and slow breathing.</p>
+          <button data-name="Relax • Frankincense" data-price="4.00" class="mt-auto inline-block rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $4.00</button>
+        </article>
+
+        <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+          <div class="aspect-[4/3] w-full overflow-hidden rounded-xl">
+            <img src="https://github.com/RegenCreatives/test-repo/blob/master/Connection.png?raw=true" alt="Connection (Bergamot) bottle" class="h-full w-full object-cover" loading="lazy"/>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Connection • Bergamot</h3>
+          <p class="mt-1 text-sm text-slate-600">Warm and bright. Suits social evenings and journaling.</p>
+          <button data-name="Connection • Bergamot" data-price="4.00" class="mt-auto inline-block rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $4.00</button>
+        </article>
+      </div>
+    </section>
+
+<!-- Stories & Soundscapes -->
+<section id="sleep-stories" class="pt-20" aria-labelledby="stories-heading">
+  <h2 id="stories-heading" class="text-3xl font-bold tracking-tight">Stories & Soundscapes</h2>
+  <p class="mt-3 max-w-3xl text-slate-700">Narrated sessions and soundscapes for sleep, connection, and calm.</p>
+
+  <div class="mt-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+
+    <!-- Sleep Stories Subscription (Monthly) -->
+    <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+      <div class="aspect-[4/3] rounded-xl overflow-hidden">
+        <img src="https://placehold.co/600x400/png?text=Sleep+Stories+Subscription" alt="Sleep Stories Subscription" class="h-full w-full object-cover" loading="lazy"/>
+      </div>
+      <h3 class="mt-4 text-lg font-semibold">Sleep Stories Subscription</h3>
+      <p class="mt-1 text-sm text-slate-600">Narrated bedtime stories with gentle binaural beats. New tracks weekly.</p>
+      <button data-name="Sleep Stories Subscription (Monthly)" data-price="10.00" data-recurring="true" data-interval="month" data-plan-id="PAYPAL_PLAN_ID_SLEEP" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Subscribe — $10.00 / month</button>
+    </article>
+
+    <!-- Date Night Guided Audio Subscription (Monthly) -->
+    <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+      <div class="aspect-[4/3] rounded-xl overflow-hidden">
+        <img src="https://placehold.co/600x400/png?text=Date+Night+Audio" alt="Date Night Guided Audio Subscription" class="h-full w-full object-cover" loading="lazy"/>
+      </div>
+      <h3 class="mt-4 text-lg font-semibold">Date Night Guided Audio</h3>
+      <p class="mt-1 text-sm text-slate-600">Connection sessions with conversation prompts, shared breathing, and ambiance.</p>
+      <button data-name="Date Night Guided Audio Subscription (Monthly)" data-price="10.00" data-recurring="true" data-interval="month" data-plan-id="PAYPAL_PLAN_ID_DN" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Subscribe — $10.00 / month</button>
+    </article>
+
+    <!-- Focus Sessions Subscription (Monthly) -->
+    <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+      <div class="aspect-[4/3] rounded-xl overflow-hidden">
+        <img src="https://placehold.co/600x400/png?text=Focus+Sessions" alt="Focus Sessions Subscription" class="h-full w-full object-cover" loading="lazy"/>
+      </div>
+      <h3 class="mt-4 text-lg font-semibold">Focus Sessions</h3>
+      <p class="mt-1 text-sm text-slate-600">Short guided focus blocks with alpha-state binaural beats for deep work.</p>
+      <button data-name="Focus Sessions Subscription (Monthly)" data-price="10.00" data-recurring="true" data-interval="month" data-plan-id="PAYPAL_PLAN_ID_FOCUS" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Subscribe — $10.00 / month</button>
+    </article>
+
+    <!-- Relax Soundscapes Subscription (Monthly) -->
+    <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+      <div class="aspect-[4/3] rounded-xl overflow-hidden">
+        <img src="https://placehold.co/600x400/png?text=Relax+Soundscapes" alt="Relax Soundscapes Subscription" class="h-full w-full object-cover" loading="lazy"/>
+      </div>
+      <h3 class="mt-4 text-lg font-semibold">Relax Soundscapes</h3>
+      <p class="mt-1 text-sm text-slate-600">Calming soundscapes and gentle cues for evening wind-down and stress relief.</p>
+      <button data-name="Relax Soundscapes Subscription (Monthly)" data-price="10.00" data-recurring="true" data-interval="month" data-plan-id="PAYPAL_PLAN_ID_RELAX" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Subscribe — $10.00 / month</button>
+    </article>
+
+    <!-- All-Access Audio Pass (Monthly) -->
+    <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+      <div class="aspect-[4/3] rounded-xl overflow-hidden">
+        <img src="https://placehold.co/600x400/png?text=All-Access+Audio+Pass" alt="All-Access Audio Pass" class="h-full w-full object-cover" loading="lazy"/>
+      </div>
+      <h3 class="mt-4 text-lg font-semibold">All-Access Audio Pass</h3>
+      <p class="mt-1 text-sm text-slate-600">Unlimited access to all stories and soundscapes. New content every week.</p>
+      <button data-name="All-Access Audio Pass (Monthly)" data-price="15.00" data-recurring="true" data-interval="month" data-plan-id="PAYPAL_PLAN_ID_ALL" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Subscribe — $25.00 / month</button>
+    </article>
+
+  </div>
+</section>
+
+
+
+ <!-- Ritual Kits -->
+<section id="kits" class="pt-20" aria-labelledby="kits-heading">
+  <h2 id="kits-heading" class="text-3xl font-bold tracking-tight">Moodistry Kits</h2>
+  <p class="mt-3 max-w-3xl text-slate-700">Curated bundles combining oils, devices, and guided audio for complete wellness rituals.</p>
+
+  <div class="mt-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+
+    <!-- Sleep Kit -->
+    <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+      <div class="aspect-[4/3] rounded-xl overflow-hidden">
+        <img src="https://placehold.co/600x400/png?text=Sleep+Kit" alt="Moodistry Sleep Kit" class="h-full w-full object-cover" loading="lazy"/>
+      </div>
+      <h3 class="mt-4 text-lg font-semibold">Moodistry Sleep Kit</h3>
+      <p class="mt-1 text-sm text-slate-600">Wireless sleep headphones, lavender oil, and calming audio for restful nights.</p>
+      <button data-name="Moodistry Sleep Kit" data-price="85.00" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $85.00</button>
+    </article>
+
+    <!-- Enhanced Sleep Kit -->
+    <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+      <div class="aspect-[4/3] rounded-xl overflow-hidden">
+        <img src="https://placehold.co/600x400/png?text=Enhanced+Sleep+Kit" alt="Moodistry Enhanced Sleep Kit" class="h-full w-full object-cover" loading="lazy"/>
+      </div>
+      <h3 class="mt-4 text-lg font-semibold">Moodistry Enhanced Sleep Kit</h3>
+      <p class="mt-1 text-sm text-slate-600">Lavender oil, wireless sleep headphones, and a subscription to 30 binaural-beat Sleep Stories.</p>
+      <button data-name="Moodistry Enhanced Sleep Kit" data-price="99.00" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $99.00</button>
+    </article>
+
+    <!-- Date Night Kit -->
+    <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+      <div class="aspect-[4/3] rounded-xl overflow-hidden">
+        <img src="https://placehold.co/600x400/png?text=Date+Night+Kit" alt="Moodistry Date Night Kit" class="h-full w-full object-cover" loading="lazy"/>
+      </div>
+      <h3 class="mt-4 text-lg font-semibold">Moodistry Date Night Connection Kit</h3>
+      <p class="mt-1 text-sm text-slate-600">Aurora lamp, connection oil, and guided audio for intimacy and togetherness.</p>
+      <button data-name="Moodistry Date Night Kit" data-price="85.00" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $85.00</button>
+    </article>
+
+    <!-- Focus Kit (will wrap to the next row in the 3-col grid) -->
+    <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+      <div class="aspect-[4/3] rounded-xl overflow-hidden">
+        <img src="https://placehold.co/600x400/png?text=Focus+Kit" alt="Moodistry Focus Kit" class="h-full w-full object-cover" loading="lazy"/>
+      </div>
+      <h3 class="mt-4 text-lg font-semibold">Moodistry Focus Kit</h3>
+      <p class="mt-1 text-sm text-slate-600">Focus oil, distraction-light audio with gentle binaural beats, and comfortable listening.</p>
+      <button data-name="Moodistry Focus Kit" data-price="85.00" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $85.00</button>
+    </article>
+
+  </div>
+</section>
+
+
+    <!-- Personalized VR Wellness 
+    <section id="vr-wellness" class="pt-20" aria-labelledby="vr-heading">
+      <h2 id="vr-heading" class="text-3xl font-bold tracking-tight">Personalized VR Wellness</h2>
+      <p class="mt-3 max-w-3xl text-slate-700">A tailored plan combining scenes, breathing rhythms, and oil pairings.</p>
+
+      <div class="mt-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden">
+            <img src="https://placehold.co/600x400/png?text=Starter+Plan" alt="Starter VR Plan" class="h-full w-full object-cover" loading="lazy"/>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Starter Plan</h3>
+          <p class="mt-1 text-sm text-slate-600">One 30-minute consult + preset scene pairing.</p>
+          <button data-name="VR Wellness • Starter Plan" data-price="19.00" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $19.00</button>
+        </article>
+
+        <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden">
+            <img src="https://placehold.co/600x400/png?text=Custom+Plan" alt="Custom VR Plan" class="h-full w-full object-cover" loading="lazy"/>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Custom Plan</h3>
+          <p class="mt-1 text-sm text-slate-600">Personalized scenes + breathing cadence + oil routine.</p>
+          <button data-name="VR Wellness • Custom Plan" data-price="39.00" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $39.00</button>
+        </article>
+
+        <article class="flex h-full flex-col rounded-2xl border border-slate-200 p-6 hover:bg-slate-50">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden">
+            <img src="https://placehold.co/600x400/png?text=Monthly+Coaching" alt="Monthly coaching" class="h-full w-full object-cover" loading="lazy"/>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Monthly Coaching</h3>
+          <p class="mt-1 text-sm text-slate-600">Weekly check-ins and scene adjustments (month-to-month).</p>
+          <button data-name="VR Wellness • Monthly Coaching" data-price="59.00" class="mt-auto rounded-full bg-indigo-600 px-5 py-2 text-white font-semibold add-to-cart">Add to cart — $59.00</button>
+        </article>
+      </div>
+    </section>
+-->
+    
+  </main>
+
+  <!-- Cart Sidebar -->
+  <aside id="cartPanel" class="fixed right-0 top-0 h-full w-80 bg-white shadow-xl border-l border-slate-200 transform translate-x-full transition-transform" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <div class="p-6 flex justify-between items-center border-b border-slate-200">
+      <h2 id="cartTitle" class="text-xl font-bold">Your Cart</h2>
+      <button id="closeCart" class="text-slate-500 hover:text-slate-800" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="p-6">
+      <ul id="cartItems" class="space-y-4 text-sm text-slate-700"></ul>
+      <div class="mt-4 flex justify-between text-sm font-semibold">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <p class="mt-1 text-xs text-slate-500">Taxes and shipping calculated at checkout.</p>
+    </div>
+    <div class="p-6 border-t border-slate-200">
+      <button id="checkoutButton" class="w-full rounded-full bg-indigo-600 px-5 py-3 text-white font-semibold">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Minimal Checkout Dialog -->
+  <dialog id="checkoutDialog" class="w-full max-w-2xl rounded-2xl p-0">
+    <form method="dialog" class="bg-white rounded-2xl overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
+        <h3 class="text-xl font-bold">Checkout</h3>
+        <button id="closeCheckout" class="text-slate-600 hover:text-slate-800">Cancel</button>
+      </div>
+      <div class="grid md:grid-cols-2">
+        <div class="p-6 space-y-4 hidden">
+          <label class="block">
+            <span class="text-sm">Full name</span>
+            <input id="c_name" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="Jane Doe" required />
+          </label>
+          <label class="block">
+            <span class="text-sm">Email</span>
+            <input id="c_email" type="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="jane@example.com" required />
+          </label>
+          <label class="block">
+            <span class="text-sm">Phone</span>
+            <input id="c_phone" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="(555) 555-5555" />
+          </label>
+          <label class="block">
+            <span class="text-sm">Address</span>
+            <input id="c_addr" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="123 Main St" />
+          </label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="block">
+              <span class="text-sm">City</span>
+              <input id="c_city" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" />
+            </label>
+            <label class="block">
+              <span class="text-sm">Postal code</span>
+              <input id="c_zip" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" />
+            </label>
+          </div>
+        </div>
+        <div class="p-6 border-t md:border-t-0 md:border-l border-slate-200">
+          <h4 class="font-semibold">Order Summary</h4>
+          <div id="summaryList" class="mt-3 space-y-2 text-sm"></div>
+          <div class="mt-4 flex items-center justify-between text-sm">
+            <span>Subtotal</span>
+            <span id="summarySubtotal">$0.00</span>
+          </div>
+          <p class="mt-1 text-xs text-slate-500">Shipping and tax calculated after order is received.</p>
+          <button id="placeOrderBtn" type="button" class="hidden mt-4 w-full rounded-full bg-indigo-600 px-5 py-3 text-white font-semibold">
+  Place Order
+</button>
+
+          <div id="paypal-container" class="mt-3"></div>
+          <div id="checkoutStatus" class="mt-3 text-sm text-slate-700"></div>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    // Elements
+    const cartButton = document.getElementById("cartButton");
+    const cartPanel = document.getElementById("cartPanel");
+    const closeCart = document.getElementById("closeCart");
+    const cartItemsEl = document.getElementById("cartItems");
+    const cartCountEl = document.getElementById("cartCount");
+    const cartSubtotalEl = document.getElementById("cartSubtotal");
+    const checkoutButton = document.getElementById("checkoutButton");
+
+    // Checkout dialog refs
+    const checkoutDialog = document.getElementById('checkoutDialog');
+    const closeCheckout = document.getElementById('closeCheckout');
+    const summaryList = document.getElementById('summaryList');
+    const summarySubtotal = document.getElementById('summarySubtotal');
+    const checkoutStatus = document.getElementById('checkoutStatus');
+
+    // Live region for a11y announcements
+    const live = document.createElement('div');
+    live.className = 'sr-only';
+    live.setAttribute('aria-live','polite');
+    document.body.appendChild(live);
+    function announce(msg){ live.textContent = msg; }
+
+    // Money helpers (operate in cents)
+    const toCents = v => Math.round(Number(v) * 100);
+    const fromCents = c => (c/100).toFixed(2);
+
+    // Persisted cart state
+    const STORAGE_KEY = 'moodistry_cart_v1';
+    const cart = loadCart();
+
+    function loadCart(){ try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; } }
+    function saveCart(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }
+
+    // Cross-tab sync
+    window.addEventListener('storage', (e) => {
+      if (e.key === STORAGE_KEY) {
+        try {
+          const next = JSON.parse(e.newValue || '[]');
+          cart.splice(0, cart.length, ...next);
+          renderCart();
+          syncSummary();
+        } catch {}
+      }
+    });
+
+    function subtotalCents(){ return cart.reduce((sum, i) => sum + toCents(i.price) * i.qty, 0); }
+
+    function addItem(name, price) {
+      const existing = cart.find(i => i.name === name);
+      if (existing) existing.qty += 1;
+      else cart.push({ name, price: Number(price), qty: 1 });
+      saveCart();
+      renderCart();
+      announce(`Added ${name} to cart`);
+      openCart();
+    }
+
+    function removeOne(name) {
+      const idx = cart.findIndex(i => i.name === name);
+      if (idx > -1) {
+        cart[idx].qty -= 1;
+        if (cart[idx].qty <= 0) cart.splice(idx, 1);
+        saveCart();
+        renderCart();
+        announce(`Updated ${name} quantity`);
+      }
+    }
+
+    function removeAll(name){
+      const idx = cart.findIndex(i => i.name === name);
+      if (idx > -1){
+        cart.splice(idx,1);
+        saveCart();
+        renderCart();
+        announce(`Removed ${name} from cart`);
+      }
+    }
+
+    function renderCart() {
+      cartItemsEl.innerHTML = cart.map(item => `
+        <li class="flex items-center justify-between gap-3">
+          <div>
+            <div class="font-medium">${item.name}</div>
+            <div class="text-xs text-slate-500">$${Number(item.price).toFixed(2)} each</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="px-2 py-1 rounded border border-slate-300 text-slate-700 hover:bg-slate-100" data-dec="${item.name}">−</button>
+            <span class="w-6 text-center">${item.qty}</span>
+            <button class="px-2 py-1 rounded border border-slate-300 text-slate-700 hover:bg-slate-100" data-inc="${item.name}">+</button>
+            <button class="px-2 py-1 text-slate-500 hover:text-red-600" title="Remove" data-rem="${item.name}">Remove</button>
+          </div>
+        </li>
+      `).join("");
+
+      const st = subtotalCents();
+      cartSubtotalEl.textContent = `$${fromCents(st)}`;
+      cartCountEl.textContent = cart.reduce((sum, i) => sum + i.qty, 0);
+
+      // Bind +/−/remove buttons
+      cartItemsEl.querySelectorAll("[data-inc]").forEach(btn => {
+        btn.addEventListener("click", () => addItem(btn.dataset.inc, cart.find(i => i.name === btn.dataset.inc).price));
+      });
+      cartItemsEl.querySelectorAll("[data-dec]").forEach(btn => {
+        btn.addEventListener("click", () => removeOne(btn.dataset.dec));
+      });
+      cartItemsEl.querySelectorAll("[data-rem]").forEach(btn => {
+        btn.addEventListener("click", () => removeAll(btn.dataset.rem));
+      });
+    }
+
+    // Wire add-to-cart buttons
+    document.querySelectorAll(".add-to-cart").forEach(btn => {
+      btn.addEventListener("click", () => addItem(btn.dataset.name, btn.dataset.price));
+    });
+
+    // Cart open/close with scroll lock
+    function openCart(){
+      document.body.style.overflow = 'hidden';
+      cartPanel.classList.remove("translate-x-full");
+      cartButton.setAttribute('aria-expanded', 'true');
+    }
+    function closeCartPanel(){
+      document.body.style.overflow = '';
+      cartPanel.classList.add("translate-x-full");
+      cartButton.setAttribute('aria-expanded', 'false');
+    }
+
+    cartButton.addEventListener("click", openCart);
+    closeCart.addEventListener("click", closeCartPanel);
+
+    // Checkout flow (Make.com webhook)
+    const MAKE_WEBHOOK_URL = 'https://hook.integromat.com/REPLACE_WITH_YOUR_WEBHOOK_KEY';
+
+    function syncSummary(){
+      summaryList.innerHTML = cart.map(i => `<div class="flex items-center justify-between"><span>${i.name} × ${i.qty}</span><span>$${fromCents(toCents(i.price)*i.qty)}</span></div>`).join('');
+      summarySubtotal.textContent = `$${fromCents(subtotalCents())}`;
+    }
+
+    checkoutButton.addEventListener('click', () => {
+      if (!cart.length){ announce('Your cart is empty'); return; }
+      syncSummary();
+      checkoutDialog.showModal();
+      closeCartPanel();
+    });
+
+    closeCheckout.addEventListener('click', (e)=>{ e.preventDefault(); checkoutDialog.close(); });
+
+    function invalid(el){
+      el.classList.add('border-red-500','ring-1','ring-red-500');
+      el.focus();
+    }
+    function clearInvalid(){
+      ['c_name','c_email'].forEach(id => document.getElementById(id).classList.remove('border-red-500','ring-1','ring-red-500'));
+    }
+
+    function makeOrderId(){ return 'mdy_' + Math.random().toString(36).slice(2) + Date.now(); }
+
+    function buildPayloadWithCustomer(orderIdOverride){
+      const subtotal = subtotalCents();
+      return {
+        source: 'moodistry.com',
+        order_id: orderIdOverride || makeOrderId(),
+        created_at: new Date().toISOString(),
+        currency: 'USD',
+        customer: {
+          name: document.getElementById('c_name').value.trim(),
+          email: document.getElementById('c_email').value.trim(),
+          phone: document.getElementById('c_phone').value.trim(),
+          address: {
+            line1: document.getElementById('c_addr').value.trim(),
+            city: document.getElementById('c_city').value.trim(),
+            postal_code: document.getElementById('c_zip').value.trim()
+          }
+        },
+        items: cart.map(i => ({
+          name: i.name,
+          qty: i.qty,
+          unit_price_cents: toCents(i.price),
+          total_cents: toCents(i.price) * i.qty
+        })),
+        totals: {
+          subtotal_cents: subtotal,
+          shipping_cents: 0,
+          tax_cents: 0,
+          grand_total_cents: subtotal
+        }
+      };
+    }
+
+    async function submitToMake(payload){
+      const res = await fetch(MAKE_WEBHOOK_URL, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok){
+        const t = await res.text();
+        throw new Error(`Webhook error: ${res.status} ${t}`);
+      }
+    }
+
+    async function placeOrder(){
+      clearInvalid();
+      checkoutStatus.textContent = '';
+      const payload = buildPayloadWithCustomer();
+
+      if (!payload.customer.name){ invalid(document.getElementById('c_name')); checkoutStatus.textContent = 'Please provide your name.'; return; }
+      if (!payload.customer.email || !/^\S+@\S+\.\S+$/.test(payload.customer.email)){ invalid(document.getElementById('c_email')); checkoutStatus.textContent = 'Please provide a valid email address.'; return; }
+
+      try {
+        checkoutStatus.textContent = 'Placing your order…';
+        await submitToMake(payload);
+
+        // Clear cart on success
+        cart.splice(0, cart.length);
+        saveCart();
+        renderCart();
+        syncSummary();
+        checkoutStatus.textContent = 'Order received. You will get a confirmation shortly.';
+        setTimeout(()=> checkoutDialog.close(), 1200);
+      } catch(err){
+        console.error(err);
+        checkoutStatus.textContent = 'There was a problem submitting your order. Please try again.';
+      }
+    }
+
+    document.getElementById('placeOrderBtn').addEventListener('click', placeOrder);
+
+    // PayPal Buttons
+    function renderPayPal(){
+      if (!window.paypal) return;
+      paypal.Buttons({
+        style: { layout: 'vertical', shape: 'pill', label: 'paypal' },
+        createOrder: (data, actions) => {
+          const value = (subtotalCents()/100).toFixed(2);
+          return actions.order.create({
+            intent: 'CAPTURE',
+            purchase_units: [{ amount: { currency_code: 'USD', value } }]
+          });
+        },
+        onApprove: async (data, actions) => {
+          try{
+            checkoutStatus.textContent = 'Capturing payment…';
+            const details = await actions.order.capture();
+            // Build payload and attach payment info
+            const payload = buildPayloadWithCustomer(data.orderID);
+            payload.payment = {
+              provider: 'paypal',
+              order_id: data.orderID,
+              capture_id: details?.purchase_units?.[0]?.payments?.captures?.[0]?.id || null,
+              status: details?.status || 'COMPLETED',
+              amount_cents: subtotalCents(),
+              currency: 'USD',
+              payer_email: details?.payer?.email_address || null
+            };
+            await submitToMake(payload);
+
+            // Clear cart
+            cart.splice(0, cart.length); saveCart(); renderCart(); syncSummary();
+            checkoutStatus.textContent = 'Payment captured. Order received.';
+            setTimeout(()=> checkoutDialog.close(), 1200);
+          } catch(err){
+            console.error(err);
+            checkoutStatus.textContent = 'Payment captured, but there was an issue submitting the order. We will follow up.';
+          }
+        },
+        onError: (err) => {
+          console.error(err);
+          checkoutStatus.textContent = 'Payment error. Please try again or use another method.';
+        }
+      }).render('#paypal-container');
+    }
+
+    // Init render from storage
+    renderCart();
+    renderPayPal();
+  </script>
+</body>
+</html>
