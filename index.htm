@@ -11,6 +11,81 @@
   </style>
 </head>
 <body class="bg-white text-slate-900">
+
+    <!-- Site Nav -->
+    
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-slate-200">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+       
+     <!-- Brand -->
+<a href="#hero" class="flex items-center gap-3 font-extrabold text-slate-900">
+  <!-- Real logo (swap src when ready). Keep concise, meaningful alt text. -->
+  <img
+    src=""
+    alt="Moodistry"
+    class="hidden h-8 w-8 rounded-md object-contain [data-has-logo='true']:block"
+    id="brand-logo"
+    loading="eager"
+    decoding="sync"
+    width="32"
+    height="32"
+  />
+
+  <!-- SVG placeholder shows until you set a real logo src -->
+  <svg
+    class="h-8 w-8 rounded-md shadow-sm ring-1 ring-slate-200 [data-has-logo='true']:hidden"
+    viewBox="0 0 32 32" aria-hidden="true"
+  >
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ec4899"/>
+        <stop offset="1" stop-color="#7c3aed"/>
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="32" height="32" rx="6" fill="url(#g)"/>
+    <circle cx="11" cy="12" r="3" fill="white" opacity="0.9"/>
+    <circle cx="21" cy="20" r="3" fill="white" opacity="0.9"/>
+  </svg>
+
+  <span class="select-none">Moodistry</span>
+</a>
+<!-- Toggle for all screen sizes -->
+  <button id="nav-toggle"
+          class="inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring focus:ring-indigo-500"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+          type="button">
+    <span class="sr-only">Open main menu</span>
+    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+</div>
+
+    
+
+  <!-- Mobile menu -->
+  <div id="primary-nav" class="hidden border-t border-slate-200" role="region" aria-label="Primary">
+
+    <div class="space-y-1 px-4 py-3">
+      <a href="#mood-science" class="mobile-link block rounded-md px-3 py-2 text-slate-800 hover:bg-slate-100">Mood Science</a>
+      <a href="#how-it-works" class="mobile-link block rounded-md px-3 py-2 text-slate-800 hover:bg-slate-100">How it Works</a>
+      <a href="#services" class="mobile-link block rounded-md px-3 py-2 text-slate-800 hover:bg-slate-100">Services</a>
+      <a href="#pricing" class="mobile-link block rounded-md px-3 py-2 text-slate-800 hover:bg-slate-100">Pricing</a>
+      <a href="#testimonials" class="mobile-link block rounded-md px-3 py-2 text-slate-800 hover:bg-slate-100">Testimonials</a>
+      <a href="#faq" class="mobile-link block rounded-md px-3 py-2 text-slate-800 hover:bg-slate-100">FAQ</a>
+      <a href="#about" class="mobile-link block rounded-md px-3 py-2 text-slate-800 hover:bg-slate-100">About</a>
+        <a href="#about" class="mobile-link block rounded-md px-3 py-2 text-slate-800 hover:bg-slate-100">Read Blog</a>
+        <a href="#about" class="mobile-link block rounded-md px-3 py-2 text-slate-800 hover:bg-slate-100">Listen to Podcast</a>
+        <a href="#about" class="mobile-link block rounded-md px-3 py-2 text-slate-800 hover:bg-slate-100">Shop our Products</a>
+        <a href="#about" class="mobile-link block rounded-md px-3 py-2 text-slate-800 hover:bg-slate-100">Admin Access</a>
+      <a href="#try" class="mobile-link mt-2 block rounded-full bg-gradient-to-r from-pink-500 to-purple-600 px-4 py-2 text-center text-white font-semibold">Try Free</a>
+    </div>
+  </div>
+</nav>
+
+    
   <!-- Hero -->
   <section id="hero" class="relative min-h-[90svh] flex items-center justify-center text-center text-white" style="background:url('https://raw.githubusercontent.com/RegenCreatives/test-repo/master/vr-wellness.png') center/cover no-repeat;">
     <div class="bg-black/55 absolute inset-0"></div>
@@ -20,6 +95,97 @@
       <a href="#services" class="mt-6 inline-block rounded-full bg-gradient-to-r from-pink-500 to-purple-600 px-6 py-3 text-white font-semibold hover:opacity-90">Choose Your Wellness Goals</a>
     </div>
   </section>
+
+      <!-- Mood Science Hero -->
+  <section id="mood-science" class="relative isolate py-16 text-center">
+    <div class="relative mx-auto max-w-3xl">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900">Mood Chemistry</h1>
+      <p class="mt-4 text-lg text-slate-700">Understanding the chemistry of moods reveals how our emotions, focus, and sense of well-being are shaped. At Moodistry, we bring this science to life through essential oils, guided breathing, and immersive VR experiences.</p>
+    </div>
+  </section>
+
+  <!-- Mood Chemistry -->
+  <section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-32 space-y-16">
+    <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+      <h2 class="text-2xl font-bold mb-4">The Science of Mood Chemistry</h2>
+      <p class="text-slate-700 text-lg leading-relaxed">Mood chemistry refers to the influence of neurotransmitters such as serotonin, dopamine, endorphins, and oxytocin on our emotional state. These “feel-good” chemicals regulate mood, motivation, and connection by sending signals through the brain and body. When balanced, they support happiness, focus, and resilience. When levels are low, feelings of stress, anxiety, or depression can occur.</p>
+    </div>
+
+    <div class="grid gap-8 sm:grid-cols-2">
+      <div class="bg-pink-100 rounded-2xl p-8 ring-card-shadow text-center">
+        <img src="https://img.icons8.com/emoji/48/brain.png" alt="Serotonin icon" class="icon mx-auto">
+        <h3 class="text-xl font-semibold">Serotonin</h3>
+        <p class="text-slate-700 mt-2 text-lg leading-relaxed">Supports happiness, focus, and emotional stability. Low levels are associated with depression.</p>
+      </div>
+      <div class="bg-purple-100 rounded-2xl p-8 ring-card-shadow text-center">
+        <img src="https://img.icons8.com/color/48/happy.png" alt="Dopamine icon" class="icon mx-auto">
+        <h3 class="text-xl font-semibold">Dopamine</h3>
+        <p class="text-slate-700 mt-2 text-lg leading-relaxed">Drives motivation and pleasure, fueling feelings of reward and accomplishment.</p>
+      </div>
+      <div class="bg-indigo-100 rounded-2xl p-8 ring-card-shadow text-center">
+        <img src="https://img.icons8.com/color/48/running.png" alt="Endorphins icon" class="icon mx-auto">
+        <h3 class="text-xl font-semibold">Endorphins</h3>
+        <p class="text-slate-700 mt-2 text-lg leading-relaxed">Act as natural stress relievers and pain reducers, boosting resilience and euphoria.</p>
+      </div>
+      <div class="bg-blue-100 rounded-2xl p-8 ring-card-shadow text-center">
+        <img src="https://img.icons8.com/color/48/heart-with-pulse.png" alt="Oxytocin icon" class="icon mx-auto">
+        <h3 class="text-xl font-semibold">Oxytocin</h3>
+        <p class="text-slate-700 mt-2 text-lg leading-relaxed">Known as the bonding chemical, oxytocin fosters trust, love, and connection.</p>
+      </div>
+    </div>
+
+    <!-- Integration -->
+    <div class="bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 rounded-2xl p-8 ring-card-shadow">
+      <h2 class="text-2xl font-bold mb-4">How Moodistry Integrates Mood Science</h2>
+      <p class="text-slate-700 text-lg leading-relaxed">Moodistry translates the science of neurotransmitters into daily rituals. Each product is designed to influence your mood chemistry in a natural, enjoyable way.</p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+        <h3 class="text-xl font-semibold mb-2">Essential Oils</h3>
+        <p class="text-slate-700 leading-relaxed">Moodistry oils are crafted to support emotional balance. Lavender, for example, can encourage serotonin release and relaxation, while citrus oils like sweet orange may elevate dopamine and focus.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+        <h3 class="text-xl font-semibold mb-2">Immersive VR</h3>
+        <p class="text-slate-700 leading-relaxed">Guided VR scenes place you in calming, safe environments—soothing skies, tranquil forests, or flowing rivers. These experiences reduce stress while reinforcing endorphin and oxytocin pathways.</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+      <h3 class="text-xl font-semibold mb-2">Guided Breathing</h3>
+      <p class="text-slate-700 leading-relaxed">Breathing patterns directly affect your nervous system. Moodistry’s guided breathing exercises provide structure and rhythm, signaling safety to the brain and boosting serotonin and endorphins. Combined with scent and VR, they complete a ritual that supports healthy mood chemistry.</p>
+    </div>
+
+    <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+      <h3 class="text-xl font-semibold mb-2">A Multi-Sensory Ritual</h3>
+      <p class="text-slate-700 leading-relaxed">By combining essential oils, breathing, and immersive VR, Moodistry creates a multi-sensory experience that gently guides your brain toward balance. Each element reinforces the other, creating consistent signals of calm, focus, or connection—supporting your mood chemistry in a holistic way.</p>
+    </div>
+  </section>
+
+    <!-- How it Works -->
+  <section id="how-it-works" class="py-16 bg-slate-50 border-t border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-6">
+      <h2 class="text-3xl font-bold text-center">How it works</h2>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="rounded-xl border bg-white p-6 shadow-sm">
+          <h3 class="text-indigo-600 font-semibold">Step 1</h3>
+          <p class="mt-2 font-bold">Pick your goal</p>
+          <p class="mt-2 text-slate-700">Sleep, focus, or reset. Choose the matching oil and a short session.</p>
+        </div>
+        <div class="rounded-xl border bg-white p-6 shadow-sm">
+          <h3 class="text-indigo-600 font-semibold">Step 2</h3>
+          <p class="mt-2 font-bold">Follow the rhythm</p>
+          <p class="mt-2 text-slate-700">Breathe with the visual guide. Keep it simple. Consistency beats intensity.</p>
+        </div>
+        <div class="rounded-xl border bg-white p-6 shadow-sm">
+          <h3 class="text-indigo-600 font-semibold">Step 3</h3>
+          <p class="mt-2 font-bold">Stay with the scene</p>
+          <p class="mt-2 text-slate-700">Let the environment and scent carry the calm. No multitasking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- Services -->
   <section id="services" class="py-16">
@@ -59,30 +225,91 @@
     </div>
   </section>
 
-  <!-- How it Works -->
-  <section id="how-it-works" class="py-16 bg-slate-50 border-t border-b border-slate-200">
-    <div class="mx-auto max-w-6xl px-6">
-      <h2 class="text-3xl font-bold text-center">How it works</h2>
-      <div class="mt-10 grid md:grid-cols-3 gap-6">
-        <div class="rounded-xl border bg-white p-6 shadow-sm">
-          <h3 class="text-indigo-600 font-semibold">Step 1</h3>
-          <p class="mt-2 font-bold">Pick your goal</p>
-          <p class="mt-2 text-slate-700">Sleep, focus, or reset. Choose the matching oil and a short session.</p>
-        </div>
-        <div class="rounded-xl border bg-white p-6 shadow-sm">
-          <h3 class="text-indigo-600 font-semibold">Step 2</h3>
-          <p class="mt-2 font-bold">Follow the rhythm</p>
-          <p class="mt-2 text-slate-700">Breathe with the visual guide. Keep it simple. Consistency beats intensity.</p>
-        </div>
-        <div class="rounded-xl border bg-white p-6 shadow-sm">
-          <h3 class="text-indigo-600 font-semibold">Step 3</h3>
-          <p class="mt-2 font-bold">Stay with the scene</p>
-          <p class="mt-2 text-slate-700">Let the environment and scent carry the calm. No multitasking.</p>
-        </div>
-      </div>
+     <!-- About Hero -->
+  <section id="about" class="relative isolate py-16 text-center">
+    <div class="relative mx-auto max-w-3xl">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900">About Moodistry</h1>
+      <p class="mt-4 text-lg text-slate-700">Moodistry is inspired by the science of <strong>mood chemistry</strong>—the balance of neurotransmitters that shape our emotions, focus, and well-being.</p>
     </div>
   </section>
 
+  <!-- Content -->
+  <section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-32 space-y-16">
+    <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+      <h2 class="text-2xl font-bold mb-4">Mood Chemistry</h2>
+      <p class="text-slate-700 text-lg leading-relaxed">Mood chemistry refers to the influence of neurotransmitters like serotonin, dopamine, endorphins, and oxytocin on your emotional state. These “feel-good” chemicals regulate mood, motivation, happiness, and well-being by signaling experiences throughout the brain. Low levels are linked to depression and anxiety, while lifestyle changes such as exercise, diet, and social interaction can help boost them.</p>
+    </div>
+
+    <div class="grid gap-8 sm:grid-cols-2">
+      <div class="bg-pink-100 rounded-2xl p-8 ring-card-shadow text-center">
+        <img src="https://img.icons8.com/emoji/48/brain.png" alt="Serotonin icon" class="icon mx-auto">
+        <h3 class="text-xl font-semibold">Serotonin</h3>
+        <p class="text-slate-700 mt-2 text-lg leading-relaxed">The primary mood regulator. Promotes happiness, focus, and emotional stability. Low levels are associated with depression.</p>
+      </div>
+      <div class="bg-purple-100 rounded-2xl p-8 ring-card-shadow text-center">
+        <img src="https://img.icons8.com/color/48/happy.png" alt="Dopamine icon" class="icon mx-auto">
+        <h3 class="text-xl font-semibold">Dopamine</h3>
+        <p class="text-slate-700 mt-2 text-lg leading-relaxed">Responsible for motivation and pleasure, fueling feelings of reward and satisfaction.</p>
+      </div>
+      <div class="bg-indigo-100 rounded-2xl p-8 ring-card-shadow text-center">
+        <img src="https://img.icons8.com/color/48/running.png" alt="Endorphins icon" class="icon mx-auto">
+        <h3 class="text-xl font-semibold">Endorphins</h3>
+        <p class="text-slate-700 mt-2 text-lg leading-relaxed">The body’s natural pain relievers and stress reducers, contributing to euphoria and resilience.</p>
+      </div>
+      <div class="bg-blue-100 rounded-2xl p-8 ring-card-shadow text-center">
+        <img src="https://img.icons8.com/color/48/heart-with-pulse.png" alt="Oxytocin icon" class="icon mx-auto">
+        <h3 class="text-xl font-semibold">Oxytocin</h3>
+        <p class="text-slate-700 mt-2 text-lg leading-relaxed">Associated with love and bonding. Plays a key role in social connection and trust.</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+      <h2 class="text-2xl font-bold mb-4">How They Work</h2>
+      <p class="text-slate-700 text-lg leading-relaxed">These chemicals act as messengers, sending signals through the brain and body. Experiences, activities, and even medications can trigger their release. Antidepressants, for example, often target serotonin levels to improve mood.</p>
+    </div>
+
+    <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+      <h2 class="text-2xl font-bold mb-4">Lifestyle Boosters</h2>
+      <ul class="list-disc list-inside text-slate-700 space-y-2 text-lg leading-relaxed">
+        <li><strong>Exercise:</strong> Boosts endorphins and other positive chemicals.</li>
+        <li><strong>Diet:</strong> Tryptophan-rich foods support serotonin production.</li>
+        <li><strong>Sunlight:</strong> Exposure stimulates serotonin release.</li>
+        <li><strong>Social Connection:</strong> Activates oxytocin and strengthens bonds.</li>
+        <li><strong>Meditation:</strong> Supports emotional balance and well-being.</li>
+      </ul>
+    </div>
+
+    <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+      <h2 class="text-2xl font-bold mb-4">The Brain-Mood Connection</h2>
+      <p class="text-slate-700 text-lg leading-relaxed">Your brain’s neurochemical activity directly influences thoughts, feelings, and behavior. Understanding mood chemistry is key to improving emotional health and supporting overall well-being—an idea at the heart of Moodistry.</p>
+    </div>
+  </section>
+
+  <!-- Moodistry Connection -->
+  <section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-32 space-y-16">
+    <div class="bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 rounded-2xl p-8 ring-card-shadow">
+      <h2 class="text-2xl font-bold mb-4">How Moodistry Brings Mood Chemistry to Life</h2>
+      <p class="text-slate-700 text-lg leading-relaxed">Moodistry is more than an idea—it is a practice designed to support your natural mood chemistry through simple, sensory experiences. We connect the science of neurotransmitters to tools you can use every day, blending scent, sound, and immersive environments.</p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+        <h3 class="text-xl font-semibold mb-2">Essential Oils & Neurochemistry</h3>
+        <p class="text-slate-700 leading-relaxed">Aromatherapy has long been used to support emotional balance. Scents like lavender and bergamot can influence the release of serotonin and dopamine, encouraging calm or focus. With Moodistry’s oils, each blend is aligned to a mood pathway—helping you create routines that encourage the right chemistry at the right time.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+        <h3 class="text-xl font-semibold mb-2">Immersive VR Environments</h3>
+        <p class="text-slate-700 leading-relaxed">Your brain responds strongly to visual and auditory cues. Guided VR sessions transport you into soothing skies, tranquil forests, or flowing water scenes. These environments can lower stress hormones while enhancing endorphin and oxytocin release, making relaxation and connection feel natural and immediate.</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl p-8 ring-card-shadow">
+      <h3 class="text-xl font-semibold mb-2">A Complete Ritual</h3>
+      <p class="text-slate-700 leading-relaxed">When combined, oils and VR create a multi-sensory ritual. As you breathe with guidance, inhale calming scents, and immerse yourself in serene visuals, your nervous system receives consistent signals of safety and balance. This layered approach helps reinforce healthy mood chemistry and supports long-term well-being.</p>
+    </div>
+  </section>
+
+  
   <!-- Pricing -->
   <section id="pricing" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24">
     <h2 class="text-3xl font-bold tracking-tight">Pricing</h2>
@@ -194,6 +421,8 @@
     </div>
   </section>
 
+    
+
   <!-- Checkout placeholder target -->
   <section id="checkout" class="py-20">
     <div class="mx-auto max-w-2xl px-6 text-center text-slate-600">
@@ -214,6 +443,36 @@
   <footer class="py-8 text-center text-sm text-slate-600">
     <p>© <span id="year"></span> Moodistry. All rights reserved.</p>
   </footer>
+
+    <script>
+  // Mobile menu toggle with ARIA updates
+  (function () {
+    const btn = document.getElementById('nav-toggle');
+    const menu = document.getElementById('primary-nav');
+
+    function setExpanded(state) {
+      btn.setAttribute('aria-expanded', String(state));
+      menu.classList.toggle('hidden', !state);
+      document.documentElement.classList.toggle('overflow-hidden', state); // lock scroll when open
+    }
+
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      setExpanded(!open);
+    });
+
+    // Close on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => setExpanded(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setExpanded(false);
+    });
+  }());
+</script>
+
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
