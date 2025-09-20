@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Moodistry Audio Library • Sleep Stories & Meditations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Quiet sleep stories, guided meditations, and nature tracks from Moodistry." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Moodistry Audio Library" />
+  <meta property="og:description" content="Quiet sleep stories, guided meditations, and nature tracks from Moodistry." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/moodistry-audio" />
+  <meta property="og:image" content="https://example.com/og-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  /* Base reset */
+  body {
+    margin: 0;
+    background-color: #fff7f4;
+    background-image: url("https://raw.githubusercontent.com/RegenCreatives/test-repo/master/moodistry_clouds.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #222326;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .h1 {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  }
+
+  /* Cards */
+  .card {
+    background: #ffffff;
+    border: 1px solid #f3e3dc;
+    box-shadow: 0 6px 16px rgba(20,20,20,.06);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Pills */
+  .pill {
+    border: 1px solid #f4dede;
+    background: #fff6f6;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .pill:hover { background: #ffefef; }
+
+  /* Links */
+  .link-quiet { color: #b91c1c; }
+  .link-quiet:hover { color: #7f1d1d; text-decoration: underline; }
+
+  /* Divider */
+  .divider { border-top: 1px solid #f3e3dc; }
+
+  /* Input range */
+  input[type="range"] { accent-color: #fb7185; }
+
+  /* Sticky mini-player */
+  .sticky-player {
+    position: fixed;
+    left: 0; right: 0; bottom: 16px;
+    margin: auto;
+    width: min(760px, calc(100% - 24px));
+    transform: translateY(140%);
+    transition: transform .25s ease;
+    z-index: 60;
+  }
+  .sticky-player.show { transform: translateY(0%); }
+
+  /* Dark mode */
+  .theme-dark body {
+    background-color: #18181b;
+    background-image:
+      linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.8)),
+      url("https://github.com/RegenCreatives/test-repo/blob/master/moodistry_clouds.png?raw=true");
+    background-repeat: no-repeat;
+    background-size: cover, cover;
+    background-position: center, center;
+    color: #e5e7eb;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+
+
+
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"PodcastSeries",
+    "name":"Moodistry Audio Library",
+    "url":"https://example.com/moodistry-audio",
+    "image":"https://example.com/podcast-cover.png",
+    "inLanguage":"en",
+    "description":"Sleep stories and meditations by Moodistry."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"PodcastEpisode",
+    "partOfSeries":{"@type":"PodcastSeries","name":"Moodistry Audio Library"},
+    "name":"The Lavender Fjord • A Gentle Bedtime Meditation",
+    "url":"https://example.com/episodes/lavender-fjord",
+    "datePublished":"2025-09-15",
+    "timeRequired":"PT55M",
+    "description":"A shoreline meditation with slow narration and ocean ambience."
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Top Nav -->
+  <header class="fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto max-w-7xl">
+      <nav class="mx-4 mt-4 rounded-2xl card">
+        <div class="flex items-center justify-between px-4 py-3 md:px-6">
+          <a href="#hero" class="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-300 rounded-xl">
+            <!-- Provided logo -->
+            <img
+              src="https://raw.githubusercontent.com/RegenCreatives/test-repo/master/mood_logo.png"
+              alt="Moodistry logo"
+              class="h-10 w-10 rounded-lg object-contain"
+              width="40" height="40"
+            />
+            <span class="font-semibold tracking-wide">Moodistry Audio Library</span>
+          </a>
+          <ul class="hidden md:flex items-center gap-6 text-sm">
+            <li><a class="hover:text-black focus:outline-none focus:ring-2 focus:ring-rose-300 rounded" href="#episodes">Stories & meditations</a></li>
+            <li><a class="hover:text-black focus:outline-none focus:ring-2 focus:ring-rose-300 rounded" href="#collections">Collections</a></li>
+            <li><a class="hover:text-black focus:outline-none focus:ring-2 focus:ring-rose-300 rounded" href="#about">About</a></li>
+            <li><a class="hover:text-black focus:outline-none focus:ring-2 focus:ring-rose-300 rounded" href="#newsletter">Newsletter</a></li>
+          </ul>
+          <div class="flex items-center gap-2">
+            <!-- Replace old Theme button -->
+<button id="theme" class="pill px-3 py-1.5 text-sm flex items-center gap-2">
+  <span id="themeIcon">🌙</span>
+  <span id="themeLabel">Dark</span>
+</button>
+
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+    
+<section id="about" class="hero pt-36 pb-16"">
+  <div class="mx-auto max-w-4xl px-4 space-y-6">
+    <h2 class="h1 text-3xl">About Moodistry Audio</h2>
+    <p class="text-neutral-700">
+      Moodistry produces sleep-friendly audio with deliberate pacing and minimal instrumentation.
+    </p>
+  </div>
+</section>
+
+   
+
+
+  <!-- Hero / Latest Episode 
+  <section id="hero" class="hero pt-36 pb-16">
+    <div class="mx-auto max-w-4xl px-4">
+      <p class="text-xs uppercase tracking-widest text-rose-500/80">Latest episode</p>
+      <h1 class="h1 mt-3 text-4xl md:text-5xl leading-tight">
+        The Lavender Fjord • A Gentle Bedtime Meditation
+      </h1>
+      <p class="mt-4 text-base md:text-lg text-neutral-700 max-w-3xl">
+        Settle into a quiet shoreline and breathe with the tide. This meditation supports a steady descent into sleep.
+      </p>
+-->
+      <!-- Embed tabs 
+      <div class="mt-6 rounded-2xl card p-4">
+        <div class="flex items-center gap-3 text-sm">
+          <button class="pill px-3 py-1.5" data-embed="apple">Apple</button>
+          <button class="pill px-3 py-1.5" data-embed="spotify">Spotify</button>
+          <button class="pill px-3 py-1.5" data-embed="native">Native</button>
+          <span class="ml-auto text-neutral-500">55 min</span>
+        </div>
+
+        <div class="mt-3">
+          <div id="embed-apple" class="rounded-xl overflow-hidden" role="group" aria-label="Apple Podcasts player"></div>
+          <div id="embed-spotify" class="hidden rounded-xl overflow-hidden" role="group" aria-label="Spotify player"></div>
+-->
+          <!-- Native fallback 
+          <div id="embed-native" class="hidden">
+            <audio id="player" class="w-full" preload="none"
+                   src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7f7d1e3f7d.mp3?filename=soft-ambient-110241.mp3"></audio>
+
+            <div class="mt-3 flex items-center gap-3">
+              <button id="play" class="pill px-4 py-2 text-sm">Play</button>
+              <button id="rew" class="pill px-3 py-2 text-sm">« 15s</button>
+              <button id="ff"  class="pill px-3 py-2 text-sm">30s »</button>
+              <span id="time" class="ml-auto text-sm text-neutral-500">0:00 / 55:00</span>
+            </div>
+            <input id="seek" type="range" min="0" max="100" value="0" class="mt-3 w-full" aria-label="Seek">
+            <div class="mt-3 text-xs text-neutral-500">See how your data is managed.</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-6 text-sm text-neutral-600">
+        Prefer ad-free listening with early access and curated feeds. Join Moodistry+.
+      </p>
+    </div>
+  </section>
+-->
+    
+  <!-- Collections -->
+  <section id="collections" class="py-6">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid md:grid-cols-3 gap-6">
+        <a class="card rounded-2xl p-6 hover:shadow-md" href="#episodes">
+          <h3 class="font-semibold">Sleep Stories</h3>
+          <p class="mt-2 text-sm text-neutral-600">Original tales with gentle endings.</p>
+        </a>
+        <a class="card rounded-2xl p-6 hover:shadow-md" href="#episodes">
+          <h3 class="font-semibold">Guided Meditations</h3>
+          <p class="mt-2 text-sm text-neutral-600">Breath-led sessions for winding down.</p>
+        </a>
+        <a class="card rounded-2xl p-6 hover:shadow-md" href="#episodes">
+          <h3 class="font-semibold">Nature & White Noise</h3>
+          <p class="mt-2 text-sm text-neutral-600">Waves, rain, and night sounds.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episode Grid -->
+  <section id="episodes" class="py-14">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="h1 text-2xl">Browse Episodes</h2>
+        <div class="flex gap-2 text-sm">
+          <button class="pill px-3 py-1.5" data-filter="all">All</button>
+          <button class="pill px-3 py-1.5" data-filter="story">Stories</button>
+          <button class="pill px-3 py-1.5" data-filter="meditation">Meditations</button>
+          <button class="pill px-3 py-1.5" data-filter="nature">Nature</button>
+        </div>
+      </div>
+      <div id="grid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6" aria-live="polite"></div>
+      <div class="mt-8 text-center">
+        <button id="loadMore" class="pill px-4 py-2">Load more</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section id="newsletter" class="py-14 divider">
+    <div class="mx-auto max-w-4xl px-4">
+      <h2 class="h1 text-2xl">Get the next story</h2>
+      <form class="mt-4 card rounded-2xl p-4 grid sm:grid-cols-[1fr_auto] gap-3" onsubmit="return false" aria-label="Newsletter sign up">
+        <input id="email" type="email" required placeholder="you@example.com" class="px-3 py-3 rounded-xl bg-white outline-none focus:ring-2 focus:ring-rose-300" aria-label="Email">
+        <button id="subscribe" class="pill px-5 py-3">Subscribe</button>
+      </form>
+      <p id="msg" class="mt-3 text-sm text-neutral-600" role="status"></p>
+    </div>
+  </section>
+
+  
+
+  <!-- Sticky mini-player -->
+  <div id="mini" class="sticky-player card rounded-2xl p-3">
+    <div class="flex items-center gap-3">
+      <img id="miniCover" class="h-10 w-10 rounded-lg object-cover" alt="" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=200&auto=format&fit=crop">
+      <div class="min-w-0">
+        <div id="miniTitle" class="truncate text-sm font-semibold">Now playing</div>
+        <div id="miniMeta" class="text-xs text-neutral-600">Moodistry</div>
+      </div>
+      <button id="miniPlay" class="ml-auto pill px-3 py-1.5 text-xs">Pause</button>
+      <button id="miniClose" class="pill px-3 py-1.5 text-xs">Close</button>
+    </div>
+  </div>
+
+  <footer class="py-10">
+    <div class="mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-neutral-600">
+      <p>© <span id="year"></span> Moodistry</p>
+      <nav class="flex items-center gap-4">
+        <a class="hover:text-black" href="#">Privacy</a>
+        <a class="hover:text-black" href="#">Terms</a>
+        <a class="hover:text-black" href="#">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+   // Theme toggle: light/dark with icon + label
+const themeBtn = document.getElementById('theme');
+const themeIcon = document.getElementById('themeIcon');
+const themeLabel = document.getElementById('themeLabel');
+
+themeBtn.addEventListener('click', ()=>{
+  const isDark = document.documentElement.style.colorScheme === 'dark';
+
+  if (isDark) {
+    // Switch to light
+    document.documentElement.style.colorScheme = 'light';
+    document.body.style.background = 'var(--bg)';
+    document.querySelectorAll('.card').forEach(c=>{
+      c.style.background='var(--panel)';
+      c.style.borderColor='var(--stroke)';
+      c.style.color='var(--ink)';
+    });
+    themeIcon.textContent = '🌙';
+    themeLabel.textContent = 'Dark';
+  } else {
+    // Switch to dark
+    document.documentElement.style.colorScheme = 'dark';
+    document.body.style.background = '#18181b';
+    document.querySelectorAll('.card').forEach(c=>{
+      c.style.background='#1f2937';
+      c.style.borderColor='#374151';
+      c.style.color='#e5e7eb';
+    });
+    themeIcon.textContent = '🌞';
+    themeLabel.textContent = 'Light';
+  }
+});
+
+
+    // Embed tab switcher
+    const tabs = document.querySelectorAll('[data-embed]');
+    const views = {
+      apple: document.getElementById('embed-apple'),
+      spotify: document.getElementById('embed-spotify'),
+      native: document.getElementById('embed-native')
+    };
+    tabs.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        Object.values(views).forEach(v => v.classList.add('hidden'));
+        views[btn.dataset.embed].classList.remove('hidden');
+      });
+    });
+
+    // Native player controls
+    const audio = document.getElementById('player');
+    const playBtn = document.getElementById('play');
+    const rewBtn = document.getElementById('rew');
+    const ffBtn  = document.getElementById('ff');
+    const seek   = document.getElementById('seek');
+    const timeEl = document.getElementById('time');
+    let dragging=false, playedOnce=false;
+
+    function fmt(n){ const m=Math.floor(n/60), s=Math.floor(n%60).toString().padStart(2,'0'); return `${m}:${s}`; }
+
+    if(audio){
+      playBtn.addEventListener('click', ()=>{
+        if(audio.paused){ audio.play(); playBtn.textContent='Pause'; } else { audio.pause(); playBtn.textContent='Play'; }
+      });
+      rewBtn?.addEventListener('click', ()=>{ audio.currentTime = Math.max(0, audio.currentTime-15); });
+      ffBtn ?.addEventListener('click', ()=>{ audio.currentTime = Math.min(audio.duration||0, audio.currentTime+30); });
+      audio.addEventListener('timeupdate', ()=>{
+        if(!dragging && audio.duration){
+          seek.value = (audio.currentTime/audio.duration)*100;
+          timeEl.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;
+        }
+        if(!playedOnce && audio.currentTime>1){ showMini(); playedOnce=true; }
+      });
+      seek?.addEventListener('input', ()=>{
+        dragging=true;
+        if(audio.duration){
+          const t=(seek.value/100)*audio.duration;
+          timeEl.textContent = `${fmt(t)} / ${fmt(audio.duration)}`;
+        }
+      });
+      seek?.addEventListener('change', ()=>{ if(audio.duration){ audio.currentTime=(seek.value/100)*audio.duration; } dragging=false; });
+    }
+
+    // Episode catalogue (unchanged)
+    const EPISODES = [
+      {id:"lavender-fjord", title:"The Lavender Fjord", kind:"meditation", mins:55, cover:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop", blurb:"Shoreline breathing and gentle imagery.", url:"#"},
+      {id:"cedar-path", title:"The Cedar Path", kind:"meditation", mins:32, cover:"https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=1200&auto=format&fit=crop", blurb:"A slow walk through moonlit woods.", url:"#"},
+      {id:"harbor-lights", title:"Harbor Lights", kind:"story", mins:48, cover:"https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&w=1200&auto=format&fit=crop", blurb:"A seaside return and a calm homecoming.", url:"#"},
+      {id:"gentle-rain", title:"Gentle Rain", kind:"nature", mins:60, cover:"https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?q=80&w=1200&auto=format&fit=crop", blurb:"An hour of rain for deep rest.", url:"#"},
+      {id:"night-train", title:"Night Train", kind:"story", mins:42, cover:"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop", blurb:"Rhythmic rail and warm carriage light.", url:"#"},
+      {id:"tidal-breath", title:"Tidal Breath", kind:"meditation", mins:28, cover:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop", blurb:"Inhale and exhale with the waves.", url:"#"}
+    ];
+    const grid = document.getElementById('grid');
+    const loadMore = document.getElementById('loadMore');
+    let filter="all", page=0, pageSize=6;
+
+    function render(){
+      const slice = EPISODES.filter(e => filter==="all" ? true : e.kind===filter).slice(0,(page+1)*pageSize);
+      grid.innerHTML = slice.map(e=>`
+        <article class="card rounded-2xl overflow-hidden">
+          <img class="h-40 w-full object-cover" alt="" src="${e.cover}">
+          <div class="p-5">
+            <h3 class="font-semibold">${e.title}</h3>
+            <p class="mt-1 text-sm text-neutral-600">${e.blurb}</p>
+            <div class="mt-3 flex items-center justify-between text-xs text-neutral-600">
+              <span>${cap(e.kind)} • ${e.mins} min</span>
+              <a class="link-quiet" href="${e.url}">Play</a>
+            </div>
+          </div>
+        </article>`).join('');
+      const total = EPISODES.filter(e => filter==="all" ? true : e.kind===filter).length;
+      loadMore.style.display = ((page+1)*pageSize >= total) ? 'none' : 'inline-block';
+    }
+    function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+    render();
+    loadMore.addEventListener('click', ()=>{ page++; render(); });
+    document.querySelectorAll('[data-filter]').forEach(b=>{
+      b.addEventListener('click', ()=>{ filter=b.dataset.filter; page=0; render(); });
+    });
+
+    // Sticky mini-player
+    const mini = document.getElementById('mini');
+    const miniPlay = document.getElementById('miniPlay');
+    const miniClose = document.getElementById('miniClose');
+    const miniTitle = document.getElementById('miniTitle');
+    const miniMeta  = document.getElementById('miniMeta');
+
+    function showMini(){
+      mini.classList.add('show');
+      miniTitle.textContent = "The Lavender Fjord";
+      miniMeta.textContent  = "Moodistry • 55 min";
+    }
+    miniPlay.addEventListener('click', ()=>{
+      if(audio && !audio.paused){ audio.pause(); miniPlay.textContent='Play'; } else { audio?.play(); miniPlay.textContent='Pause'; }
+    });
+    miniClose.addEventListener('click', ()=> mini.classList.remove('show'));
+
+    // Newsletter mock
+    document.getElementById('subscribe').addEventListener('click', ()=>{
+      const v = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg');
+      if(!v){ msg.textContent="Please enter a valid email."; return; }
+      msg.textContent = "Subscribed. We will send the next story soon.";
+      // Hook to Make.com webhook here.
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
