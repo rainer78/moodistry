@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://YOUR-DOMAIN.example/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/connection/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/focus/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/gift-set/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/sleep-experience/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/digital/connection/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/digital/focus/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/listen/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/listen/connection/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/listen/focus/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/listen/sleep/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/membership/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/my-moodistry/</loc></url>
+</urlset>
